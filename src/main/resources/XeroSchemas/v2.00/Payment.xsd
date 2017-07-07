@@ -25,6 +25,8 @@
       <xs:element minOccurs="0" maxOccurs="1" name="PaymentType" type="paymentType" />
       <xs:element minOccurs="0" maxOccurs="1" name="Status" type="paymentStatus" />
       <xs:element minOccurs="0" maxOccurs="1" name="UpdatedDateUTC" type="xs:dateTime" />
+      
+      <xs:element minOccurs="0" maxOccurs="1" name="IsReconciled" type="xs:boolean" />
     </xs:all>
     <xs:attribute name="status" type="entityValidationStatus" use="optional" />
   </xs:complexType>
