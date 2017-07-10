@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Invoice"
+    elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="actionType">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="SELECT"/>
+      <xs:enumeration value="UPDATE"/>
+      <xs:enumeration value="CREATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
