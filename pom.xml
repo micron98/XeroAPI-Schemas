@@ -1,14 +1,45 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.xero</groupId>
-	<artifactId>xero-accounting-api-schema</artifactId>
+	<groupId>com.github.xeroapi</groupId>
+	<artifactId>xeroapi-schemas</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1.2</version>
+	<version>1.0.0</version>
 	<name>Xero Accounting API Schema</name>
-	<url>http://maven.apache.org</url>
+	<description>These are XSD schema files for Xero accounting API</description>
+  <url>https://github.com/XeroAPI/XeroAPI-Schemas</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+  <developers>
+    <developer>
+      <name>Xero API Team</name>
+      <email>api@xero.com</email>
+      <organization>Xero</organization>
+      <organizationUrl>https://developer.xero.com</organizationUrl>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git://github.com/XeroAPI/XeroAPI-Schemas.git</connection>
+    <developerConnection>scm:git:ssh://github.com:XeroAPI/XeroAPI-Schemas.git</developerConnection>
+    <url>http://github.com/XeroAPI/XeroAPI-Schemas/tree/master</url>
+  </scm>
 
-    <distributionManagement>
+
+    <!--distributionManagement>
         <repository>
             <id>internal.repo</id>
             <name>Temporary Staging Repository</name>
@@ -17,12 +48,13 @@
     </distributionManagement>
 
     <properties>
-        <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+        <! github server corresponds to entry in ~/.m2/settings.xml ->
         <github.global.server>github</github.global.server>
-    </properties>
+    </properties-->
 	<build>
-		<finalName>Xero-Schema-Example</finalName>
+		<finalName>Xero-Schema</finalName>
 		<plugins>
+      
 		  <plugin>
           <groupId>org.jvnet.jaxb2.maven2</groupId>
           <artifactId>maven-jaxb2-plugin</artifactId>
@@ -55,9 +87,10 @@
                   </configuration>
               </execution>
           </executions>
-          <version>0.8.0</version>
+          <version>0.14.0</version>
       </plugin>
-       <plugin>
+
+      <!--plugin>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.1</version>
           <configuration>
@@ -69,24 +102,15 @@
            <artifactId>site-maven-plugin</artifactId>
            <version>0.12</version>
            <configuration>
-                <!-- git commit message -->
                 <message>Maven artifacts for ${project.version}</message>
-                <!-- disable webpage processing -->
                 <noJekyll>true</noJekyll>
-                <!-- matches distribution management repository url above -->
                 <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
-                <!-- remote branch name -->
                 <branch>refs/heads/mvn-repo</branch>
-                <!-- If you remove this then the old artifact will be removed and new 
-                 one will replace. But with the merge tag you can just release by changing 
-                                                  the version -->
                 <merge>true</merge>
                 <includes>
                   <include>**/*</include>
                   </includes>
-                  <!-- github repo name -->
                   <repositoryName>XeroAPI-Schemas</repositoryName>
-                  <!-- github username -->
                   <repositoryOwner>XeroAPI</repositoryOwner>
             </configuration>
             <executions>
@@ -97,6 +121,57 @@
                       <phase>deploy</phase>
                 </execution>
             </executions>
+      </plugin-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
       </plugin>
 		</plugins>
 	</build>
