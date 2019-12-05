@@ -1,4 +1,4 @@
-Xero API XSD Schemas
+Xero API XSD Schemas (deprecated)
 ====================
 
 ### Deprecation Notice
