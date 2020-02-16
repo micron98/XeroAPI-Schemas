@@ -1,29 +1,25 @@
-Xero API XSD Schemas
+Xero API XSD Schemas (deprecated)
 ====================
+
+### Deprecation Notice
+
+As of November 2018, Xero is  deprecating support for XSD schemas. We are moving ahead with OpenAPI Spec 3 files which are [available on Github](https://github.com/XeroAPI/Xero-OpenAPI).
+
+### Overview
 
 This repository contains a set of XSD schemas that can be used with the [Xero API](http://api.xero.com). Xero provide [online accounting software](http://www.xero.com/) for businesses. For more information on connecting to the API, see the [Xero Developer Centre](http://developer.xero.com/).
 
-### Download Xero Schema
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.xeroapi/xeroapi-schemas.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.xeroapi%22%20AND%20a:%22xeroapi-schemas%22)
+
+### Maven Dependency
 
 Add this dependency to your POM.xml
 
     <dependency>
-	  <groupId>com.xero</groupId>
-	  <artifactId>xero-accounting-api-schema</artifactId>
-	  <version>0.0.5</version>
-	</dependency>
-
-You will also add this repository to your POM.xml
-
-     <repository>
-      <id>xero-accounting-api-schema-mvn-repo</id>
-	  <url>https://raw.github.com/XeroAPI/XeroAPI-Schemas/mvn-repo/</url>
-	  <snapshots>
-	    <enabled>true</enabled>
-	    <updatePolicy>always</updatePolicy>
-	  </snapshots>
-    </repository>
-
+    	<groupId>com.github.xeroapi</groupId>
+    	<artifactId>xeroapi-schemas</artifactId>
+    	<version>1.0.0</version>
+    </dependency>
 
 Generate your own classes
 ---------
