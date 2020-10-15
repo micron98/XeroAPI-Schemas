@@ -11,6 +11,7 @@
   <xs:include schemaLocation="TaxRate.xsd" />  
   <xs:include schemaLocation="Account.xsd" />
   <xs:include schemaLocation="Payment.xsd" />
+  <xs:include schemaLocation="BatchPayment.xsd" />
   <xs:include schemaLocation="Contact.xsd" />
   <xs:include schemaLocation="ContactGroup.xsd" />
   <xs:include schemaLocation="Tracking.xsd" />
@@ -64,6 +65,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="Organisations" type="ArrayOfOrganisation" />
       <xs:element minOccurs="0" maxOccurs="1" name="CreditNotes" type="ArrayOfCreditNote" />
       <xs:element minOccurs="0" maxOccurs="1" name="Currencies" type="ArrayOfCurrency" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BatchPayments" type="ArrayOfBatchPayment" />
       <xs:element minOccurs="0" maxOccurs="1" name="Payments" type="ArrayOfPayment" />
       <xs:element minOccurs="0" maxOccurs="1" name="Journals" type="ArrayOfJournal" />
       <xs:element minOccurs="0" maxOccurs="1" name="BrandingThemes" type="ArrayOfBrandingTheme" />

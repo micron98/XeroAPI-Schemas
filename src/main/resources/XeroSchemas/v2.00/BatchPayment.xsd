@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BatchPayment"
+    elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:include schemaLocation="BaseTypes.xsd" />
+  <xs:include schemaLocation="Account.xsd" />
+  <xs:include schemaLocation="Invoice.xsd" />
+  <xs:include schemaLocation="CreditNote.xsd" />
+  <xs:include schemaLocation="Overpayment.xsd" />
+  <xs:include schemaLocation="Payment.xsd" />
+
+  <xs:element name="BatchPayments" nillable="true" type="ArrayOfBatchPayment" />
+  <xs:element name="BatchPayment" type="BatchPayment" />
+
+  <!-- Payment against an invoice -->
+  <xs:complexType name="BatchPayment">
+    <xs:all>
+      <xs:element minOccurs="0" maxOccurs="1" name="Account" type="Account" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Particulars" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Code" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Details" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reference" type="referenceType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BatchPaymentID" type="uniqueIdentifier" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Payments" type="ArrayOfPayment" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Type" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IsReconciled" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ValidationErrors" type="ArrayOfValidationError" />
+      
+      <xs:element minOccurs="0" maxOccurs="1" name="UpdatedDateUTC" type="xs:dateTime" />
+      
+    </xs:all>
+
+  </xs:complexType>
+
+  <xs:complexType name="ArrayOfBatchPayment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BatchPayment" nillable="true" type="BatchPayment" />
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>
